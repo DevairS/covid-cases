@@ -1,0 +1,87 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2021,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react", 
+        "react-hooks", 
+        "@typescript-eslint", 
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/jsx-filename-extension": [ 1, {"extensions": [".tsx"]} ],
+        "import/prefer-default-export": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+            "error",
+            {
+                "allowExpressions": true
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "pathGroups": [
+                    {
+                    "pattern": "react",
+                    "group": "external",
+                    "position": "before"
+                    },
+                    {
+                    "pattern": "~/**",
+                    "group": "parent",
+                    "position": "before"
+                    },
+                    {
+                    "pattern": "@*/**",
+                    "group": "external",
+                    "position": "after"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": [
+                    "react"
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "react/function-component-definition": "off",
+        "class-methods-use-this": "off",
+        "no-shadow": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/require-default-props": "off",
+        "react/react-in-jsx-scope" : "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "typescript": {}
+        }
+    }
+}
