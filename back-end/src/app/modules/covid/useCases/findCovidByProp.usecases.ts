@@ -15,7 +15,6 @@ export class FindCovidByPropUseCase
 
   async execute(command: CovidFilterProp): Promise<ICovidCase[]> {
     const covidCases = await this.covidCasesRepository.getByProp(command);
-    //tratamentos aqui;
     return covidCases;
   }
 }

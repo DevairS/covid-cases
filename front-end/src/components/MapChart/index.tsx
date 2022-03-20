@@ -5,6 +5,7 @@ import {
   Geography,
   Graticule,
 } from 'react-simple-maps';
+import { mapsMappear } from '~/utils';
 
 const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
@@ -28,21 +29,25 @@ const MapChart: FC<Props> = ({ casesData, setTooltip }) => {
 
     return `rgba(233, 132, 17, ${a})`;
   };
+  const mapperNameCountry = (nameLib: string): string => {
+    const findMapper = mapsMappear.find((el) => el.nameMaps === nameLib);
+    return findMapper.nameApi;
+  };
 
   return (
     <ComposableMap
       data-tip=""
       projectionConfig={{
-        rotate: [-15, 0, 0],
+        rotate: [-20, 0, 0],
         scale: 147,
       }}
     >
       <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
       <Geographies geography={geoUrl}>
-        {({ geographies }) =>
-          geographies.map((geo) => {
+        {({ geographies }) => {
+          return geographies.map((geo) => {
             const findCountryCases = casesData.find(
-              (row) => row.location === geo.properties.NAME,
+              (row) => row.location === mapperNameCountry(geo.properties.NAME),
             );
             return (
               <Geography
@@ -67,8 +72,8 @@ const MapChart: FC<Props> = ({ casesData, setTooltip }) => {
                 }}
               />
             );
-          })
-        }
+          });
+        }}
       </Geographies>
     </ComposableMap>
   );
