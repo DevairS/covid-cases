@@ -38,8 +38,9 @@ const MapChart: FC<Props> = ({ casesData, setTooltip }) => {
     <ComposableMap
       data-tip=""
       projectionConfig={{
-        rotate: [-20, 0, 0],
-        scale: 147,
+        rotate: [-15, 0, 0],
+        scale: 140,
+        parallels: [100, 200],
       }}
     >
       <Graticule stroke="#E4E5E6" strokeWidth={0.5} />

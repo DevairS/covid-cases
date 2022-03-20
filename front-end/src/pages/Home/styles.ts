@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Paper as _Paper } from '@mui/material';
 import { pxToRem } from '~/utils';
 
 export const Container = styled.div`
@@ -6,6 +7,7 @@ export const Container = styled.div`
   min-width: 100%;
   flex-direction: column;
   align-items: center;
+  background-color: #f5f5f5;
 `;
 
 export const ContainerMain = styled.div`
@@ -15,10 +17,10 @@ export const ContainerMain = styled.div`
   margin-top: ${pxToRem(20)};
 `;
 
-export const ContainerMap = styled.div`
-  width: 50%;
+export const ContainerMap = styled(_Paper).attrs({ elevation: 2 })`
+  width: 60%;
   justify-content: center;
-
+  margin: ${pxToRem(20)} ${pxToRem(0)};
   @media (max-width: 1080px) {
     width: 70%;
   }

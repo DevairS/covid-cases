@@ -57,9 +57,9 @@ const TimeLine: FC<Props> = ({ rangeDate, handleChangeDate }) => {
         max={length}
       />
       <ContainerInput>
-        <InputDate type="date" disabled value={valueInputStart} />
+        <InputDate type="text" disabled value={valueInputStart} />
         <Text>até</Text>
-        <InputDate type="date" disabled value={valueInputEnd} />
+        <InputDate type="text" disabled value={valueInputEnd} />
       </ContainerInput>
     </Container>
   );

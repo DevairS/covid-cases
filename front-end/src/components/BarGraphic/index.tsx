@@ -37,7 +37,7 @@ const BarGraphic: FC<Props> = ({ rankCases }) => {
       },
       title: {
         display: true,
-        text: 'Chart.js Horizontal Bar Chart',
+        text: 'Rank dos Paises com mais casos de corona virus acumulados até o momento',
       },
     },
   };
@@ -48,13 +48,13 @@ const BarGraphic: FC<Props> = ({ rankCases }) => {
     labels,
     datasets: [
       {
-        label: 'Casos de covid',
+        label: 'Casos registrados',
         data: labels.map((el) => {
           const findLabel = rankCases.find((elem) => elem.location === el);
           return findLabel.cases;
         }),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        borderColor: 'rgb(233, 132, 17)',
+        backgroundColor: 'rgba(233, 132, 17, 0.5)',
       },
     ],
   };

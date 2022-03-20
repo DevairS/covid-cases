@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import ReactTooltip from 'react-tooltip';
-import { Navbar, MapChart, TimeLine, BarGraphic } from '~/components';
+import { Navbar, MapChart, TimeLine, BarGraphic, Footer } from '~/components';
 import Details from './Details';
 import { Container, ContainerMain, ContainerMap } from './styles';
 
@@ -34,6 +34,7 @@ const Home: FC<Props> = ({
         <Details casesData={casesData} />
         <BarGraphic rankCases={rankCases} />
       </ContainerMain>
+      <Footer />
     </Container>
   );
 };
