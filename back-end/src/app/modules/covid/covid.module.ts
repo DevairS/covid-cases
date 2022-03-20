@@ -4,6 +4,7 @@ import { CovidDITokens } from './covidDITokens';
 import { CovidCasesMappers } from './helpers/mappers/covidCases.mappers';
 import { CovidCasesRepository } from './repositories/covidCasesRepository';
 import { FindCovidByPropUseCase } from './useCases/findCovidByProp.usecases';
+import { FindCovidByRangeDate } from './useCases/findCovidByRangeDate.usecase';
 import { FindCovidInfos } from './useCases/findCovidInfos.usecase';
 import { FindCovidRankCases } from './useCases/findCovidRankCases.usecases';
 
@@ -22,6 +23,7 @@ import { FindCovidRankCases } from './useCases/findCovidRankCases.usecases';
     FindCovidRankCases,
     CovidCasesMappers,
     FindCovidInfos,
+    FindCovidByRangeDate,
   ],
   controllers: [CovidController],
 })

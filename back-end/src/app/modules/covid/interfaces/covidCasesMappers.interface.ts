@@ -1,6 +1,6 @@
 import { ICovidCase } from './covidCase.interface';
-import { ICovidCaseRank } from './covidCaseRank.interface';
+import { ICovidCaseCalculedCases } from './covidCaseCalculedCases.interface';
 
 export interface ICovidCasesMappers {
-  mapperByRank(data: ICovidCase[]): ICovidCaseRank[];
+  mapperByLocationCases(data: ICovidCase[]): ICovidCaseCalculedCases[];
 }

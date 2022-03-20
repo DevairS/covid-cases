@@ -11,6 +11,7 @@ import { CovidFilterProp } from './interfaces/covidFilterProp.interface';
 import { FindCovidByPropUseCase } from './useCases/findCovidByProp.usecases';
 import { FindCovidRankCases } from './useCases/findCovidRankCases.usecases';
 import { FindCovidInfos } from './useCases/findCovidInfos.usecase';
+import { FindCovidByRangeDate } from './useCases/findCovidByRangeDate.usecase';
 
 @Controller()
 export class CovidController {
@@ -18,6 +19,7 @@ export class CovidController {
     private readonly findCovidCasesByDate: FindCovidByPropUseCase,
     private readonly findCovidRankCases: FindCovidRankCases,
     private readonly findCovidInfos: FindCovidInfos,
+    private readonly findCovidByRangeDate: FindCovidByRangeDate,
   ) {}
   @Get()
   @UseInterceptors(CacheInterceptor)
@@ -35,5 +37,13 @@ export class CovidController {
   @UseInterceptors(CacheInterceptor)
   getInfos() {
     return this.findCovidInfos.execute();
+  }
+
+  @Get('rangeDate/:startDate/:endDate')
+  @UseInterceptors(CacheInterceptor)
+  getAllByRangeDate(@Param() params) {
+    const { startDate, endDate } = params;
+    console.log(params);
+    return this.findCovidByRangeDate.execute(startDate, endDate);
   }
 }

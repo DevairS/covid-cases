@@ -19,4 +19,12 @@ export class CovidCasesRepository implements ICovidCasesRepository {
     const uniqueDate = Array.from(new Set(dateVerifiedCases));
     return uniqueDate.sort();
   }
+
+  async getByDate(startDate: string, endDate: string): Promise<ICovidCase[]> {
+    const filterArray = db.filter(
+      (el) => el.date >= startDate && el.date <= endDate,
+    );
+
+    return filterArray;
+  }
 }

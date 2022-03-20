@@ -1,6 +1,9 @@
-import { ICovidCaseRank } from '../../interfaces/covidCaseRank.interface';
+import { ICovidCaseCalculedCases } from '../../interfaces/covidCaseCalculedCases.interface';
 
-export const compareRank = (a: ICovidCaseRank, b: ICovidCaseRank): number => {
+export const compareRank = (
+  a: ICovidCaseCalculedCases,
+  b: ICovidCaseCalculedCases,
+): number => {
   if (a.cases > b.cases) {
     return -1;
   }
