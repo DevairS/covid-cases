@@ -3,36 +3,26 @@ import { observer } from 'mobx-react-lite';
 import { useStores } from '../../hooks';
 import Home from './Home';
 
-const BLOCK_SIZE = 999;
-
 const HomeContainer: FC = () => {
-  const { app, covid } = useStores();
+  const { covid } = useStores();
   const [casesData, setCasesData] = useState<Covid.DataReduce[]>([]);
+  const [rangeDate, setRangeDate] = useState<string[]>([]);
+  const [rankCases, setRankCases] = useState<Covid.Rank[]>([]);
 
-  const fetchDate = useCallback(async (): Promise<void> => {
-    let offSet = 0;
-    let status = true;
-    while (status) {
-      // eslint-disable-next-line no-await-in-loop
-      status = await covid.getCovidCases(offSet, offSet + BLOCK_SIZE);
-      offSet += BLOCK_SIZE + 1;
-      if (!status) {
-        return;
-      }
-    }
+  const getData = useCallback(async () => {
+    await Promise.all([covid.getCovidCasesRank(10), covid.getCovidRangeDate()]);
+    setCasesData(covid.covidData);
+    setRangeDate(covid.covidRangeDate);
+    setRankCases(covid.covidRankCases);
   }, [covid]);
 
-  const updateGeolocation = useCallback(async () => {
-    await app.setGeolocation();
-    await fetchDate();
-    setCasesData(covid.covidData);
-  }, [app, covid.covidData, fetchDate]);
-
   useEffect(() => {
-    updateGeolocation();
-  }, [app, updateGeolocation]);
+    getData();
+  }, [getData]);
 
-  return <Home casesData={casesData} />;
+  return (
+    <Home casesData={casesData} rangeDate={rangeDate} rankCases={rankCases} />
+  );
 };
 
 export default observer(HomeContainer);

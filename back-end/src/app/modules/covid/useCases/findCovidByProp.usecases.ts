@@ -6,7 +6,7 @@ import { CovidFilterProp } from '../interfaces/covidFilterProp.interface';
 import { IUseCase } from '../interfaces/useCase.interface';
 
 export class FindCovidByPropUseCase
-  implements IUseCase<CovidFilterProp, ICovidCase[]>
+  implements IUseCase<CovidFilterProp, any, ICovidCase[]>
 {
   constructor(
     @Inject(CovidDITokens.CovidRepository)

@@ -12,10 +12,6 @@ export default createGlobalStyle`
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
   }
-  #root {
-    width: 100vw;
-    min-height: 100vh;
-  }
   input, button {
     font-family: 'Open Sans', sans-serif;
   }

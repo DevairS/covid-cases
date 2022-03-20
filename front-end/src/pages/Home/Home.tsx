@@ -1,24 +1,29 @@
 import { FC, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import ReactTooltip from 'react-tooltip';
-import { Navbar, MapChart, TimeLine } from '~/components';
+import { Navbar, MapChart, TimeLine, BarGraphic } from '~/components';
+import Details from './Details';
 import { Container, ContainerMain, ContainerMap } from './styles';
 
 type Props = {
   casesData: Covid.DataReduce[];
+  rankCases: Covid.Rank[];
+  rangeDate: string[];
 };
 
-const Home: FC<Props> = ({ casesData }) => {
+const Home: FC<Props> = ({ casesData, rankCases, rangeDate }) => {
   const [tooltip, setTooltip] = useState<string>('');
   return (
     <Container>
       <Navbar />
       <ContainerMain>
-        <TimeLine />
+        <TimeLine rangeDate={rangeDate} />
         <ContainerMap>
-          <MapChart casesData={casesData} setTooltip={setTooltip} />
           <ReactTooltip>{tooltip}</ReactTooltip>
+          <MapChart casesData={casesData} setTooltip={setTooltip} />
         </ContainerMap>
+        <Details />
+        <BarGraphic rankCases={rankCases} />
       </ContainerMain>
     </Container>
   );

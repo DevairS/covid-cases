@@ -17,4 +17,9 @@ declare namespace Covid {
       casesAnalyzed: number;
     }[];
   };
+
+  type Rank = {
+    cases: string;
+    location: string;
+  };
 }

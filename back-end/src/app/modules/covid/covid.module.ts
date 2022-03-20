@@ -1,8 +1,11 @@
 import { CacheModule, Module } from '@nestjs/common';
 import { CovidController } from './covid.controller';
 import { CovidDITokens } from './covidDITokens';
+import { CovidCasesMappers } from './helpers/mappers/covidCases.mappers';
 import { CovidCasesRepository } from './repositories/covidCasesRepository';
 import { FindCovidByPropUseCase } from './useCases/findCovidByProp.usecases';
+import { FindCovidInfos } from './useCases/findCovidInfos.usecase';
+import { FindCovidRankCases } from './useCases/findCovidRankCases.usecases';
 
 @Module({
   imports: [
@@ -16,6 +19,9 @@ import { FindCovidByPropUseCase } from './useCases/findCovidByProp.usecases';
       provide: CovidDITokens.CovidRepository,
     },
     FindCovidByPropUseCase,
+    FindCovidRankCases,
+    CovidCasesMappers,
+    FindCovidInfos,
   ],
   controllers: [CovidController],
 })

@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { Container } from './styles';
+import { Paper } from './styles';
 
 const Navbar: FC = () => {
-  return <Container>Casos Corona Virus Mundo</Container>;
+  return <Paper>Casos Corona Virus Mundo</Paper>;
 };
 
 export default Navbar;
