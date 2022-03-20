@@ -1,25 +1,23 @@
 declare namespace Covid {
-  type Data = {
-    location: string;
-    date: date;
-    variant: string;
-    num_sequences: number;
-    perc_sequences: number;
-    num_sequences_total: number;
-  };
-
-  type DataReduce = {
-    country: string;
+  type Cases = {
     cases: number;
-    casesByPeriod: {
-      date: string;
-      casesConfirmed: number;
-      casesAnalyzed: number;
-    }[];
+    casesSequences: number;
   };
 
   type Rank = {
-    cases: string;
+    cases: number;
     location: string;
+    casesSequences: number;
+  };
+
+  type Variant = {
+    cases: number;
+    variant: string;
+  };
+
+  type Data = {
+    casesByCountry: Rank[];
+    casesByVariant: Variant[];
+    allCases: Cases;
   };
 }

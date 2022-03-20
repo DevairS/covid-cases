@@ -4,13 +4,20 @@ import { Container, Pie } from './styles';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieGraphic: FC = () => {
+type Props = {
+  variantsData: Covid.Variant[];
+};
+const PieGraphic: FC<Props> = ({ variantsData }) => {
+  const labels = variantsData.map((el) => el.variant);
   const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels,
     datasets: [
       {
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: labels.map((el) => {
+          const variantFind = variantsData.find((dat) => dat.variant === el);
+          return variantFind.cases;
+        }),
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -34,6 +41,7 @@ const PieGraphic: FC = () => {
 
   return (
     <Container>
+      <p>Rank das 5 variantes no periodo</p>
       <Pie data={data} />
     </Container>
   );

@@ -43,7 +43,6 @@ export class CovidController {
   @UseInterceptors(CacheInterceptor)
   getAllByRangeDate(@Param() params) {
     const { startDate, endDate } = params;
-    console.log(params);
     return this.findCovidByRangeDate.execute(startDate, endDate);
   }
 }

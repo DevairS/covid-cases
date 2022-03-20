@@ -3,22 +3,26 @@ import { Container, Slider, InputDate, ContainerInput, Text } from './styles';
 
 type Props = {
   rangeDate: string[];
+  handleChangeDate(startDate: string, endDate: string): void;
 };
 
-const TimeLine: FC<Props> = ({ rangeDate }) => {
+const TimeLine: FC<Props> = ({ rangeDate, handleChangeDate }) => {
   const length = rangeDate.length - 1;
   const [value, setValue] = useState([]);
   const [valueInputStart, setValueInputStart] = useState('');
   const [valueInputEnd, setValueInputEnd] = useState('');
 
-  const handleChangeDate = useCallback(
+  const changeDate = useCallback(
     (index: number): string => {
       return rangeDate[index];
     },
     [rangeDate],
   );
 
-  const handleChange = (event: Event, newValue: number | number[]): void => {
+  const handleChange = async (
+    event: Event,
+    newValue: number | number[],
+  ): Promise<void> => {
     if (
       Array.isArray(newValue) &&
       value[0] === newValue[0] &&
@@ -29,16 +33,19 @@ const TimeLine: FC<Props> = ({ rangeDate }) => {
     setValue(newValue as number[]);
 
     if (Array.isArray(newValue)) {
-      setValueInputStart(() => handleChangeDate(newValue[0]));
-      setValueInputEnd(() => handleChangeDate(newValue[1]));
+      const startDate = changeDate(newValue[0]);
+      const endDate = changeDate(newValue[1]);
+      setValueInputStart(startDate);
+      setValueInputEnd(endDate);
+      await handleChangeDate(startDate, endDate);
     }
   };
 
   useEffect(() => {
     setValue([length - 1, length]);
-    setValueInputStart(() => handleChangeDate(length - 1));
-    setValueInputEnd(() => handleChangeDate(length));
-  }, [handleChangeDate, length]);
+    setValueInputStart(() => changeDate(length - 1));
+    setValueInputEnd(() => changeDate(length));
+  }, [changeDate, length]);
 
   return (
     <Container>

@@ -4,4 +4,8 @@ import { ICovidCaseVariant } from './covidCaseVariant.interface';
 export class ICovidCaseVariantLocation {
   casesByCountry: ICovidCaseCalculedCases[];
   casesByVariant: ICovidCaseVariant[];
+  allCases: {
+    cases: number;
+    casesSequences: number;
+  };
 }

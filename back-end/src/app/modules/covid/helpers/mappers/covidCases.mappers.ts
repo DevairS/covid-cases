@@ -31,6 +31,17 @@ export class CovidCasesMappers implements ICovidCasesMappers {
         .reduce((sum, current) => sum + current);
       return { variant, cases };
     });
-    return mapperData;
+    return mapperData.sort(compareRank);
+  }
+
+  mapperAllCases(data: ICovidCase[]): any {
+    let cases = 0;
+    let casesSequences = 0;
+    data.forEach((el) => {
+      cases += el.num_sequences;
+      casesSequences += el.num_sequences_total;
+    });
+
+    return { cases, casesSequences };
   }
 }

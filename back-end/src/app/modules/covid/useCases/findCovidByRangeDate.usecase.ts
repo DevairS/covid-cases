@@ -27,6 +27,9 @@ export class FindCovidByRangeDate
 
     const casesByVariant =
       this.covidCasesMappers.mapperByCasesVariant(covidCases);
-    return { casesByCountry, casesByVariant };
+    const casesByVariantFilter = casesByVariant.slice(0, 5);
+
+    const allCases = this.covidCasesMappers.mapperAllCases(covidCases);
+    return { casesByCountry, casesByVariant: casesByVariantFilter, allCases };
   }
 }

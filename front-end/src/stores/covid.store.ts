@@ -1,7 +1,6 @@
 import { runInAction, makeAutoObservable } from 'mobx';
 import { persist } from 'mobx-persist';
 import { CovidApi } from '~/api';
-import { groupDataCases, reduceDataCases } from '~/utils';
 
 class CovidStore {
   covidApi: CovidApi;
@@ -12,7 +11,7 @@ class CovidStore {
   }
 
   @persist('object')
-  covidData: Covid.DataReduce[] = [];
+  covidData: Covid.Data = null;
 
   @persist('object')
   covidRankCases: Covid.Rank[] = [];
@@ -20,15 +19,14 @@ class CovidStore {
   @persist('object')
   covidRangeDate: string[] = [];
 
-  getCovidCases = async (offSet: number, limit: number): Promise<boolean> => {
-    const blockData = await this.covidApi.getCasesForDate(offSet, limit);
-    const blockDataReduce = reduceDataCases(blockData);
-
+  getCovidCases = async (startDate: string, endDate: string): Promise<void> => {
+    const data = await this.covidApi.getCasesVariantsByRangeDate(
+      startDate,
+      endDate,
+    );
     runInAction(() => {
-      this.covidData = groupDataCases(blockDataReduce, this.covidData);
+      this.covidData = data;
     });
-    if (blockData.length < 999) return false;
-    return true;
   };
 
   getCovidCasesRank = async (count: number): Promise<void> => {
