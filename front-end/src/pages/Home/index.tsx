@@ -8,7 +8,6 @@ const HomeContainer: FC = () => {
   const [casesData, setCasesData] = useState<Covid.Data>();
   const [rangeDate, setRangeDate] = useState<string[]>([]);
   const [rankCases, setRankCases] = useState<Covid.Rank[]>([]);
-  const [loading, setLoading] = useState(true);
 
   const handleChangeDate = async (
     startDate: string,
@@ -36,7 +35,6 @@ const HomeContainer: FC = () => {
       setCasesData(covid.covidData);
       setRangeDate(covid.covidRangeDate);
       setRankCases(covid.covidRankCases);
-      setLoading(false);
     } catch (error) {
       throw new Error(error);
     }
