@@ -5,7 +5,7 @@ const Footer: FC = () => {
   return (
     <Container>
       <Text>
-        Todos os dados os disponivel em:{' '}
+        Dados fornecidos por:{' '}
         <a
           href="https://www.kaggle.com/yamqwe/omicron-covid19-variant-daily-cases"
           target="_blank"

@@ -12,6 +12,9 @@ export default createGlobalStyle`
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
   }
+  #root{
+    background-color: #171923
+  }
   input, button {
     font-family: 'Open Sans', sans-serif;
   }

@@ -46,7 +46,6 @@ const HomeContainer: FC = () => {
     getData();
   }, [getData]);
 
-  if (loading) return <h1>usar o skeleeton</h1>;
   return (
     <Home
       casesData={casesData}

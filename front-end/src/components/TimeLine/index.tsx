@@ -49,7 +49,6 @@ const TimeLine: FC<Props> = ({ rangeDate, handleChangeDate }) => {
 
   return (
     <Container>
-      <Text>Selecione um periodo de data que deseja consultar os dados</Text>
       <Slider
         getAriaLabel={() => 'Temperature range'}
         value={value}

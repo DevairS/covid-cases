@@ -1,8 +1,12 @@
 import { FC } from 'react';
-import { Paper } from './styles';
+import { Paper, Text } from './styles';
 
 const Navbar: FC = () => {
-  return <Paper>Casos Corona Virus Mundo</Paper>;
+  return (
+    <Paper>
+      <Text>Casos Corona Virus Mundo</Text>
+    </Paper>
+  );
 };
 
 export default Navbar;

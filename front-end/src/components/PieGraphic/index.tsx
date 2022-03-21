@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Container, Pie } from './styles';
+import { Container, Pie, Text } from './styles';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -19,11 +19,11 @@ const PieGraphic: FC<Props> = ({ variantsData }) => {
           return variantFind.cases;
         }),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 99, 132, 0.8)',
+          'rgba(54, 162, 235, 0.8)',
+          'rgba(255, 206, 86, 0.8)',
+          'rgba(75, 192, 192, 0.8)',
+          'rgba(153, 102, 255, 0.8)',
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
@@ -39,8 +39,8 @@ const PieGraphic: FC<Props> = ({ variantsData }) => {
 
   return (
     <Container>
-      <p>Casos registrados por variante</p>
-      <Pie data={data} />
+      <Text>Casos registrados por variante</Text>
+      {variantsData ? <Pie data={data} /> : null}
     </Container>
   );
 };

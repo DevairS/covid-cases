@@ -8,7 +8,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar, Container } from './styles';
+import { Bar, Container, Paper } from './styles';
 
 type Props = {
   rankCases: Covid.Rank[];
@@ -54,14 +54,16 @@ const BarGraphic: FC<Props> = ({ rankCases }) => {
           return findLabel.cases;
         }),
         borderColor: 'rgb(233, 132, 17)',
-        backgroundColor: 'rgba(233, 132, 17, 0.5)',
+        backgroundColor: 'rgba(233, 132, 17, 0.8)',
       },
     ],
   };
 
   return (
     <Container>
-      <Bar options={options} data={data} />
+      <Paper>
+        <Bar options={options} data={data} />
+      </Paper>
     </Container>
   );
 };

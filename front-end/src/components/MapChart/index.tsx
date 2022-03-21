@@ -57,14 +57,16 @@ const MapChart: FC<Props> = ({ casesData, setTooltip }) => {
                 fill={
                   findCountryCases
                     ? handleColor(findCountryCases.cases)
-                    : '#f5f4f6'
+                    : '#2d3748'
                 }
                 stroke="#EAEAEC"
                 onMouseEnter={() => {
                   const { NAME } = geo.properties;
                   setTooltip(
                     `${NAME} - ${
-                      findCountryCases ? findCountryCases.cases : 0
+                      findCountryCases
+                        ? findCountryCases.cases.toLocaleString('pt-BR')
+                        : 0
                     }`,
                   );
                 }}

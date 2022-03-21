@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { PieGraphic } from '~/components';
-import { Container, Paper } from './styles';
+import { Container, Paper, Text, TextTitle } from './styles';
 
 type Props = {
   casesData: Covid.Data;
@@ -8,14 +8,20 @@ type Props = {
 const Details: FC<Props> = ({ casesData }) => {
   return (
     <Container>
-      <PieGraphic variantsData={casesData.casesByVariant} />
+      <PieGraphic variantsData={casesData ? casesData.casesByVariant : []} />
       <Paper>
-        <h5>Total de casos registrados</h5>
-        <h3>{casesData.allCases.casesSequences}</h3>
+        <TextTitle>Total de casos registrados</TextTitle>
+        {casesData ? (
+          <Text>
+            {casesData.allCases.casesSequences.toLocaleString('pt-BR')}
+          </Text>
+        ) : null}
       </Paper>
       <Paper>
-        <h5>Total de casos Confirmados</h5>
-        <h3>{casesData.allCases.cases}</h3>
+        <TextTitle>Total de casos Confirmados</TextTitle>
+        {casesData ? (
+          <Text>{casesData.allCases.cases.toLocaleString('pt-BR')}</Text>
+        ) : null}
       </Paper>
     </Container>
   );

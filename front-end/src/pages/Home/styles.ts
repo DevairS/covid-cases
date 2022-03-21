@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Paper as _Paper } from '@mui/material';
+import { Paper as _Paper, Skeleton as _Skeleton } from '@mui/material';
+import { device } from '~/theme';
 import { pxToRem } from '~/utils';
 
 export const Container = styled.div`
@@ -7,24 +8,43 @@ export const Container = styled.div`
   min-width: 100%;
   flex-direction: column;
   align-items: center;
-  background-color: #f5f5f5;
 `;
 
 export const ContainerMain = styled.div`
-  width: 80%;
+  width: 60%;
   flex-direction: column;
   align-items: center;
   margin-top: ${pxToRem(20)};
+
+  @media ${device.laptop} {
+    width: 80%;
+  }
+
+  @media ${device.phone} {
+    width: 90%;
+  }
 `;
 
 export const ContainerMap = styled(_Paper).attrs({ elevation: 2 })`
-  width: 60%;
+  width: 100%;
   justify-content: center;
-  margin: ${pxToRem(20)} ${pxToRem(0)};
-  @media (max-width: 1080px) {
-    width: 70%;
+  margin-top: ${pxToRem(20)};
+  height: ${pxToRem(500)};
+
+  &.css-1mbunh-MuiPaper-root {
+    background-color: #2d3748;
   }
-  @media (max-width: 768px) {
-    width: 95%;
+
+  @media ${device.laptop} {
+    height: ${pxToRem(400)};
   }
+
+  @media ${device.phone} {
+    height: ${pxToRem(300)};
+  }
+`;
+
+export const Skeleton = styled(_Skeleton)`
+  width: 100%;
+  height: 100%;
 `;
